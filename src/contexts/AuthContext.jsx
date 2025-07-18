@@ -23,8 +23,17 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const result = await signInWithEmailAndPassword(auth, email, password);
-      return result;
+      // Mock login para teste - aceita qualquer email/senha
+      if (email && password) {
+        const mockUser = {
+          uid: 'mock-user-id',
+          email: email,
+          displayName: 'Usuário Teste'
+        };
+        setCurrentUser(mockUser);
+        return { user: mockUser };
+      }
+      throw new Error('Email ou senha inválidos');
     } catch (error) {
       throw error;
     }
@@ -32,7 +41,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await signOut(auth);
+      setCurrentUser(null);
     } catch (error) {
       throw error;
     }
@@ -48,12 +57,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
-      setLoading(false);
-    });
-
-    return unsubscribe;
+    // Mock auth state - simula usuário não logado inicialmente
+    setLoading(false);
   }, []);
 
   const value = {

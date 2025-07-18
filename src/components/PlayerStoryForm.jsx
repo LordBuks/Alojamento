@@ -6,7 +6,8 @@ const PlayerStoryForm = ({ story, onSubmit, onCancel }) => {
   const [formData, setFormData] = useState({
     playerId: '',
     storyText: '',
-    familyPhotoUrl: ''
+    familyPhotoUrl: '',
+    photoPhrase: ''
   });
   const [familyPhotoFile, setFamilyPhotoFile] = useState(null);
   const [familyPhotoPreview, setFamilyPhotoPreview] = useState('');
@@ -21,7 +22,8 @@ const PlayerStoryForm = ({ story, onSubmit, onCancel }) => {
       setFormData({
         playerId: story.playerId || '',
         storyText: story.storyText || '',
-        familyPhotoUrl: story.familyPhotoUrl || ''
+        familyPhotoUrl: story.familyPhotoUrl || '',
+        photoPhrase: story.photoPhrase || ''
       });
       setFamilyPhotoPreview(story.familyPhotoUrl || '');
       if (story.playerId) {
@@ -230,6 +232,24 @@ const PlayerStoryForm = ({ story, onSubmit, onCancel }) => {
               />
               <p className="mt-1 text-sm text-gray-500">
                 Mínimo de 10 caracteres. Conte uma história inspiradora sobre o atleta.
+              </p>
+            </div>
+
+            {/* Frase da Foto */}
+            <div className="md:col-span-2">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Frase da Foto
+              </label>
+              <input
+                type="text"
+                name="photoPhrase"
+                value={formData.photoPhrase}
+                onChange={handleInputChange}
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+                placeholder="Digite uma frase que defina o atleta (aparecerá na foto da família)..."
+              />
+              <p className="mt-1 text-sm text-gray-500">
+                Esta frase aparecerá como citação na foto da família do atleta.
               </p>
             </div>
           </div>

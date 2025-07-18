@@ -9,8 +9,8 @@ const PlayerStoryView = ({ player, story }) => {
       
       {/* Seção de destaque com foto da família e nome estilizado - Responsiva */}
       <div className="relative h-auto md:h-96 overflow-hidden chelsea-hero-section">
-        {/* Degradê branco suave para vermelho */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white via-[#E5050F] to-[#E5050F]"></div>
+        {/* Degradê suave de branco para vermelho */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white via-red-50 via-red-100 to-[#E5050F]"></div>
         
         {/* Sobrenomes BEM GRANDES com transparência no fundo */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pl-40">
@@ -68,6 +68,28 @@ const PlayerStoryView = ({ player, story }) => {
               {player.name.split(' ')[0].toUpperCase()}
             </p>
           </div>
+          
+          {/* Frase personalizada do atleta - Posicionada do meio para a direita */}
+          {story.photoPhrase && (
+            <div className="absolute z-10 right-4 md:right-8" style={{ top: 'calc(50% - 40px)', maxWidth: '40%' }}>
+              <blockquote className="athlete-quote text-white text-right">
+                <p className="text-lg md:text-xl font-medium italic leading-relaxed"
+                   style={{
+                     textShadow: '2px 2px 6px rgba(0,0,0,0.7)',
+                     opacity: 0.95
+                   }}>
+                  "{story.photoPhrase}"
+                </p>
+                <footer className="text-sm md:text-base font-semibold mt-2"
+                        style={{
+                          textShadow: '1px 1px 4px rgba(0,0,0,0.7)',
+                          opacity: 0.9
+                        }}>
+                  — {player.name.split(' ')[0]}
+                </footer>
+              </blockquote>
+            </div>
+          )}
           
           {/* Espaço vazio para equilibrar layout em desktop */}
           <div className="hidden md:block w-80"></div>
