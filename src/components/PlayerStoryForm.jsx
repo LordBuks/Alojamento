@@ -19,7 +19,14 @@ const PlayerStoryForm = ({ story, onSubmit, onCancel }) => {
   useEffect(() => {
     loadPlayers();
     if (story) {
+      console.log('Story recebida:', story); // Adicionado para depuração
       setFormData({
+        playerId: story.playerId || '',
+        storyText: story.storyText || '',
+        familyPhotoUrl: story.familyPhotoUrl || '',
+        photoPhrase: story.photoPhrase || ''
+      });
+      console.log('FormData definido:', { // Adicionado para depuração
         playerId: story.playerId || '',
         storyText: story.storyText || '',
         familyPhotoUrl: story.familyPhotoUrl || '',
@@ -45,6 +52,7 @@ const PlayerStoryForm = ({ story, onSubmit, onCancel }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    console.log(`Campo ${name} alterado para:`, value); // Adicionado para depuração
     setFormData(prev => ({
       ...prev,
       [name]: value
