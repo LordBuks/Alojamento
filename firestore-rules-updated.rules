@@ -1,0 +1,46 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Função para verificar se o usuário é administrador
+    function isAdmin() {
+      return request.auth != null && request.auth.token.email == 'gabiru@inter.com';
+    }
+    
+    // Função para verificar se o usuário é autorizado (admin ou usuário comum)
+    function isAuthorizedUser() {
+      return request.auth != null && 
+             (request.auth.token.email == 'gabiru@inter.com' ||
+              request.auth.token.email == 'monitor@inter.com' ||
+              request.auth.token.email == 'servicosocial@inter.com' ||
+              request.auth.token.email == 'pedagogia@inter.com');
+    }
+    
+    // Coleção de jogadores - leitura para usuários autorizados, escrita apenas para admin
+    match /players/{playerId} {
+      allow read: if isAuthorizedUser();
+      allow write: if isAdmin();
+    }
+    
+    // Coleção de histórias - leitura para usuários autorizados, escrita apenas para admin
+    match /historias/{storyId} {
+      allow read: if isAuthorizedUser();
+      allow write: if isAdmin();
+    }
+    
+    // Coleção de configurações - acesso apenas para admin
+    match /settings/{settingId} {
+      allow read, write: if isAdmin();
+    }
+    
+    // Coleção de logs - acesso apenas para admin
+    match /logs/{logId} {
+      allow read, write: if isAdmin();
+    }
+    
+    // Outras coleções - acesso apenas para admin por padrão
+    match /{document=**} {
+      allow read, write: if isAdmin();
+    }
+  }
+}
+
