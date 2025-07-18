@@ -71,7 +71,7 @@ const PlayerStoryView = ({ player, story }) => {
           
           {/* Frase personalizada do atleta - Posicionada do meio para a direita */}
           {story.photoPhrase && (
-            <div className="absolute z-10 right-4 md:right-8" style={{ top: 'calc(50% - 20px)', maxWidth: '40%' }}>
+            <div className="absolute z-10 right-4 md:right-8" style={{ top: 'calc(50% - 10px)', maxWidth: '40%' }}>
               <blockquote className="athlete-quote text-white text-right">
                 <p className="text-lg md:text-xl font-medium italic leading-relaxed"
                    style={{
