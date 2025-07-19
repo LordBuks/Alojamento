@@ -18,25 +18,36 @@ const PlayerStoryForm = ({ story, onSubmit, onCancel }) => {
 
   useEffect(() => {
     loadPlayers();
+  }, []);
+
+  // useEffect separado para lidar com mudanças na story
+  useEffect(() => {
     if (story) {
-      console.log('Story recebida:', story); // Adicionado para depuração
-      setFormData({
+      console.log('Story recebida:', story);
+      const newFormData = {
         playerId: story.playerId || '',
         storyText: story.storyText || '',
         familyPhotoUrl: story.familyPhotoUrl || '',
         photoPhrase: story.photoPhrase || ''
-      });
-      console.log('FormData definido:', { // Adicionado para depuração
-        playerId: story.playerId || '',
-        storyText: story.storyText || '',
-        familyPhotoUrl: story.familyPhotoUrl || '',
-        photoPhrase: story.photoPhrase || ''
-      });
+      };
+      console.log('FormData definido:', newFormData);
+      setFormData(newFormData);
       setFamilyPhotoPreview(story.familyPhotoUrl || '');
-      if (story.playerId) {
+      
+      if (story.playerId && players.length > 0) {
         const player = players.find(p => p.id === story.playerId);
         setSelectedPlayer(player);
       }
+    } else {
+      // Reset form quando não há story (modo de criação)
+      setFormData({
+        playerId: '',
+        storyText: '',
+        familyPhotoUrl: '',
+        photoPhrase: ''
+      });
+      setFamilyPhotoPreview('');
+      setSelectedPlayer(null);
     }
   }, [story, players]);
 
@@ -52,11 +63,16 @@ const PlayerStoryForm = ({ story, onSubmit, onCancel }) => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    console.log(`Campo ${name} alterado para:`, value); // Adicionado para depuração
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    console.log(`Campo ${name} alterado para:`, value);
+    
+    setFormData(prevFormData => {
+      const newFormData = {
+        ...prevFormData,
+        [name]: value
+      };
+      console.log('Novo formData:', newFormData);
+      return newFormData;
+    });
 
     if (name === 'playerId') {
       const player = players.find(p => p.id === value);
@@ -132,6 +148,7 @@ const PlayerStoryForm = ({ story, onSubmit, onCancel }) => {
         familyPhotoUrl
       };
       
+      console.log('Dados sendo enviados:', storyData);
       await onSubmit(storyData);
     } catch (error) {
       console.error('Erro ao salvar história:', error);
@@ -231,7 +248,7 @@ const PlayerStoryForm = ({ story, onSubmit, onCancel }) => {
               </label>
               <textarea
                 name="storyText"
-                // value={formData.storyText} // Esta linha foi comentada para o teste
+                value={formData.storyText}
                 onChange={handleInputChange}
                 rows={8}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
@@ -251,7 +268,7 @@ const PlayerStoryForm = ({ story, onSubmit, onCancel }) => {
               <input
                 type="text"
                 name="photoPhrase"
-                // value={formData.photoPhrase} // Esta linha foi comentada para o teste
+                value={formData.photoPhrase}
                 onChange={handleInputChange}
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
                 placeholder="Digite uma frase que defina o atleta (aparecerá na foto da família)..."
