@@ -99,40 +99,39 @@ const EmployeeModal = ({ employee, isOpen, onClose }) => {
               
               {/* Container para foto e primeiro nome (responsivo) */}
               <div className="relative flex flex-col md:flex-row items-start justify-start h-full">
-                {/* Foto do funcionário - Alinhada à margem esquerda e colada na borda inferior */}
-                <div className="w-auto md:w-80 flex justify-start items-end pt-8 md:pt-0 z-20 pl-4 md:pl-8"
+                {/* Foto do funcionário - Colada na borda esquerda do container */}
+                <div className="w-auto md:w-80 flex justify-start items-end pt-8 md:pt-0 z-20"
                      style={{ height: '100%' }}>
-                  <div className="w-48 h-64 md:w-56 md:h-72 bg-white rounded-lg shadow-2xl overflow-hidden">
-                    {employee.photoData?.url || employee.photoUrl ? (
-                      <img
-                        src={employee.photoData?.url || employee.photoUrl}
-                        alt={employee.name}
-                        className="w-full h-full object-cover"
-                        style={{
-                          filter: 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3))',
-                          backgroundColor: 'transparent',
-                          mixBlendMode: 'normal',
-                          objectPosition: 'center'
-                        }}
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                        <span className="text-gray-400">Sem foto</span>
-                      </div>
-                    )}
-                  </div>
+                  {employee.photoData?.url || employee.photoUrl ? (
+                    <img
+                      src={employee.photoData?.url || employee.photoUrl}
+                      alt={employee.name}
+                      className="w-48 md:w-full h-auto object-contain"
+                      style={{
+                        filter: 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3))',
+                        backgroundColor: 'transparent',
+                        mixBlendMode: 'normal',
+                        maxHeight: '95%',
+                        alignSelf: 'flex-end',
+                        objectPosition: 'bottom'
+                      }}
+                    />
+                  ) : (
+                    <div className="w-48 h-64 bg-gray-200 rounded-lg flex items-center justify-center">
+                      <span className="text-gray-400">Sem foto</span>
+                    </div>
+                  )}
                 </div>
                 
-                {/* Primeiro nome e função */}
-                <div className="relative z-10 text-center md:text-right p-6 md:p-8 md:pr-12">
-                  <h1 className="text-white font-black text-4xl md:text-6xl leading-none tracking-tight mb-2 text-shadow-strong">
-                    {employee.name.split(" ")[0].toUpperCase()}
-                  </h1>
-                  <p className="text-white text-lg md:text-xl font-semibold opacity-90 text-shadow-strong">
-                    {employee.function || 'Função não informada'}
-                  </p>
-                  <p className="text-white text-sm md:text-base opacity-80 text-shadow-strong">
-                    Matrícula: {employee.registration || 'Não informada'}
+                {/* Primeiro nome - Posicionado sobre o segundo nome, seguindo o padrão dos atletas */}
+                <div className="absolute z-10" style={{ top: 'calc(50% - 80px)', left: 'calc(50% - 160px)' }}>
+                  <p className="text-white text-4xl md:text-5xl font-bold tracking-wider"
+                     style={{
+                       opacity: 0.9,
+                       textShadow: '2px 2px 6px rgba(0,0,0,0.7)',
+                       letterSpacing: '0.05em'
+                     }}>
+                    {employee.name.split(' ')[0].toUpperCase()}
                   </p>
                 </div>
               </div>

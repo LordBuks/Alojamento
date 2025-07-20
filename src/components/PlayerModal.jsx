@@ -43,8 +43,8 @@ const PlayerModal = ({ player, isOpen, onClose }) => { // Define o componente fu
             
             {/* Container para foto e primeiro nome (responsivo) */} {/* Comentário para indicar o container da foto e primeiro nome. */}
             <div className="relative flex flex-col md:flex-row items-start justify-start h-full"> {/* Div container para a foto e o primeiro nome, com layout responsivo alinhado à esquerda. */}
-              {/* Foto do jogador - Alinhada à margem esquerda e colada na borda inferior */} {/* Comentário para indicar a seção da foto do jogador. */}
-              <div className="w-auto md:w-80 flex justify-start items-end pt-8 md:pt-0 z-20 pl-4 md:pl-8" // Div para a foto do jogador, alinhada à esquerda com padding adequado.
+              {/* Foto do jogador - Colada na borda esquerda do container */} {/* Comentário para indicar a seção da foto do jogador. */}
+              <div className="w-auto md:w-80 flex justify-start items-end pt-8 md:pt-0 z-20" // Div para a foto do jogador, sem padding para ficar colada na borda.
                    style={{ height: '100%' }}> {/* Estilo inline para garantir que a div ocupe 100% da altura disponível. */}
                 {player.photoData?.url || player.photoUrl ? ( // Verifica se há URL da foto do jogador.
                   <img // Elemento img para exibir a foto do jogador.

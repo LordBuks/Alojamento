@@ -33,8 +33,8 @@ const PlayerStoryView = ({ player, story }) => {
         
         {/* Container para foto da família e primeiro nome (responsivo) */}
         <div className="relative flex flex-col md:flex-row items-start justify-start h-full">
-          {/* Foto da família - Alinhada à margem esquerda e colada na borda inferior */}
-          <div className="w-auto md:w-80 flex justify-start items-end pt-8 md:pt-0 z-20 pl-4 md:pl-8"
+          {/* Foto da família - Colada na borda esquerda do container */}
+          <div className="w-auto md:w-80 flex justify-start items-end pt-8 md:pt-0 z-20"
                style={{ height: '100%' }}>
             {story.familyPhotoUrl ? (
               <img
