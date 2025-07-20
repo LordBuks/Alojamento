@@ -99,8 +99,8 @@ const EmployeeModal = ({ employee, isOpen, onClose }) => {
               
               {/* Container para foto e primeiro nome (responsivo) */}
               <div className="relative flex flex-col md:flex-row items-start justify-start h-full">
-                {/* Foto do funcionário - Colada na borda esquerda do container */}
-                <div className="w-auto md:w-80 flex justify-start items-end pt-8 md:pt-0 z-20"
+                {/* Foto do funcionário - Colada na borda esquerda da div, no início do degradê */}
+                <div className="w-auto md:w-80 flex justify-start items-end pt-8 md:pt-0 z-20 -ml-6 md:-ml-8"
                      style={{ height: '100%' }}>
                   {employee.photoData?.url || employee.photoUrl ? (
                     <img
