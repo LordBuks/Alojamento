@@ -98,15 +98,22 @@ const EmployeeModal = ({ employee, isOpen, onClose }) => {
               </div>
               
               {/* Container para foto e primeiro nome (responsivo) */}
-              <div className="relative flex flex-col md:flex-row items-center justify-between h-full">
-                {/* Foto do funcionário */}
-                <div className="relative z-10 p-6 md:p-8">
+              <div className="relative flex flex-col md:flex-row items-start justify-start h-full">
+                {/* Foto do funcionário - Alinhada à margem esquerda e colada na borda inferior */}
+                <div className="w-auto md:w-80 flex justify-start items-end pt-8 md:pt-0 z-20 pl-4 md:pl-8"
+                     style={{ height: '100%' }}>
                   <div className="w-48 h-64 md:w-56 md:h-72 bg-white rounded-lg shadow-2xl overflow-hidden">
                     {employee.photoData?.url || employee.photoUrl ? (
                       <img
                         src={employee.photoData?.url || employee.photoUrl}
                         alt={employee.name}
                         className="w-full h-full object-cover"
+                        style={{
+                          filter: 'drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3))',
+                          backgroundColor: 'transparent',
+                          mixBlendMode: 'normal',
+                          objectPosition: 'center'
+                        }}
                       />
                     ) : (
                       <div className="w-full h-full bg-gray-200 flex items-center justify-center">

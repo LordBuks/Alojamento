@@ -97,9 +97,9 @@ const PlayerModalWithTabs = ({ player, isOpen, onClose }) => {
               </div>
               
               {/* Container para foto e primeiro nome (responsivo) */}
-              <div className="relative flex flex-col md:flex-row items-center justify-between h-full">
-                {/* Foto do jogador - Colada na borda inferior */}
-                <div className="w-full md:w-80 flex justify-center items-end pt-8 md:pt-0 z-20 md:pl-8"
+              <div className="relative flex flex-col md:flex-row items-start justify-start h-full">
+                {/* Foto do jogador - Alinhada à margem esquerda e colada na borda inferior */}
+                <div className="w-auto md:w-80 flex justify-start items-end pt-8 md:pt-0 z-20 pl-4 md:pl-8"
                      style={{ height: '100%' }}>
                   {player.photoData?.url || player.photoUrl ? (
                     <img
