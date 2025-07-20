@@ -238,7 +238,7 @@
 
 @media (max-width: 768px) {
   .chelsea-hero-section {
-    height: 16rem;
+    height: auto; /* ALTERADO: De 16rem para auto para melhor responsividade */
   }
   
   .chelsea-player-name-bg {
@@ -250,13 +250,13 @@
   }
   
   .chelsea-hero-section .absolute.left-8.w-80 {
-    width: 9rem;
+    width: auto; /* ALTERADO: De 9rem para auto para melhor responsividade */
   }
 }
 
 @media (max-width: 640px) {
   .chelsea-hero-section {
-    height: 12rem;
+    height: auto; /* ALTERADO: De 12rem para auto para melhor responsividade */
   }
   
   .chelsea-player-name-bg {
@@ -268,7 +268,8 @@
   }
   
   .chelsea-hero-section .absolute.left-8.w-80 {
-    width: 7rem;
+    width: auto; /* ALTERADO: De 7rem para auto para melhor responsividade */
   }
 }
+
 

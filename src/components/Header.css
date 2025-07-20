@@ -2,7 +2,7 @@
 .header {
   background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
   color: white;
-  padding: 15px 0;
+  padding: 0.9375rem 0; /* ALTERADO: De 15px para rem para melhor escalabilidade */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   position: sticky;
   top: 0;
@@ -10,9 +10,9 @@
 }
 
 .header-content {
-  max-width: 1200px;
+  max-width: 75rem; /* ALTERADO: De 1200px para rem para melhor escalabilidade */
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 1.25rem; /* ALTERADO: De 20px para rem para melhor escalabilidade */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,16 +26,16 @@
 .logo-section {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 0.9375rem; /* ALTERADO: De 15px para rem para melhor escalabilidade */
 }
 
 .header-logo {
-  width: 50px;
-  height: 50px;
+  width: 3.125rem; /* ALTERADO: De 50px para rem para melhor escalabilidade */
+  height: 3.125rem; /* ALTERADO: De 50px para rem para melhor escalabilidade */
   border-radius: 50%;
   object-fit: contain;
   background: white;
-  padding: 5px;
+  padding: 0.3125rem; /* ALTERADO: De 5px para rem para melhor escalabilidade */
 }
 
 .header-titles {
@@ -44,14 +44,14 @@
 }
 
 .main-title {
-  font-size: 24px;
+  font-size: 1.5rem; /* ALTERADO: De 24px para rem para melhor escalabilidade */
   font-weight: bold;
   margin: 0;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .subtitle {
-  font-size: 14px;
+  font-size: 0.875rem; /* ALTERADO: De 14px para rem para melhor escalabilidade */
   margin: 0;
   opacity: 0.9;
   font-weight: 300;
@@ -66,32 +66,32 @@
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 8px;
+  gap: 0.5rem; /* ALTERADO: De 8px para rem para melhor escalabilidade */
 }
 
 .user-email {
-  font-size: 14px;
+  font-size: 0.875rem; /* ALTERADO: De 14px para rem para melhor escalabilidade */
   opacity: 0.9;
   font-weight: 500;
 }
 
 .header-actions {
   display: flex;
-  gap: 10px;
+  gap: 0.625rem; /* ALTERADO: De 10px para rem para melhor escalabilidade */
 }
 
 .admin-button,
 .logout-button {
-  padding: 8px 16px;
+  padding: 0.5rem 1rem; /* ALTERADO: De 8px 16px para rem para melhor escalabilidade */
   border: none;
-  border-radius: 6px;
-  font-size: 14px;
+  border-radius: 0.375rem; /* ALTERADO: De 6px para rem para melhor escalabilidade */
+  font-size: 0.875rem; /* ALTERADO: De 14px para rem para melhor escalabilidade */
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 0.3125rem; /* ALTERADO: De 5px para rem para melhor escalabilidade */
 }
 
 .admin-button {
@@ -124,9 +124,9 @@
 /* Responsividade */
 @media (max-width: 768px) {
   .header-content {
-    padding: 0 15px;
+    padding: 0 0.9375rem; /* ALTERADO: De 15px para rem para melhor escalabilidade */
     flex-direction: column;
-    gap: 15px;
+    gap: 0.9375rem; /* ALTERADO: De 15px para rem para melhor escalabilidade */
   }
 
   .header-left,
@@ -143,11 +143,11 @@
   }
 
   .main-title {
-    font-size: 20px;
+    font-size: 1.25rem; /* ALTERADO: De 20px para rem para melhor escalabilidade */
   }
 
   .subtitle {
-    font-size: 12px;
+    font-size: 0.75rem; /* ALTERADO: De 12px para rem para melhor escalabilidade */
   }
 
   .user-info {
@@ -158,22 +158,22 @@
 @media (max-width: 480px) {
   .logo-section {
     flex-direction: column;
-    gap: 10px;
+    gap: 0.625rem; /* ALTERADO: De 10px para rem para melhor escalabilidade */
     text-align: center;
   }
 
   .header-logo {
-    width: 40px;
-    height: 40px;
+    width: 2.5rem; /* ALTERADO: De 40px para rem para melhor escalabilidade */
+    height: 2.5rem; /* ALTERADO: De 40px para rem para melhor escalabilidade */
   }
 
   .main-title {
-    font-size: 18px;
+    font-size: 1.125rem; /* ALTERADO: De 18px para rem para melhor escalabilidade */
   }
 
   .header-actions {
     flex-direction: column;
-    gap: 8px;
+    gap: 0.5rem; /* ALTERADO: De 8px para rem para melhor escalabilidade */
     width: 100%;
   }
 
@@ -183,4 +183,5 @@
     justify-content: center;
   }
 }
+
 

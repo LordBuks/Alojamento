@@ -9,7 +9,7 @@
 
 .login-header {
   text-align: center;
-  padding: 32px 16px 16px;
+  padding: 2rem 1rem 1rem; /* ALTERADO: De 32px 16px 16px para rem para melhor escalabilidade */
   background: white;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -20,15 +20,15 @@
 }
 
 .logo-container {
-  margin-bottom: 16px;
+  margin-bottom: 1rem; /* ALTERADO: De 16px para rem para melhor escalabilidade */
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
 .logo {
-  width: 64px;
-  height: 64px;
+  width: 4rem; /* ALTERADO: De 64px para rem para melhor escalabilidade */
+  height: 4rem; /* ALTERADO: De 64px para rem para melhor escalabilidade */
   border-radius: 50%;
   object-fit: contain;
   display: block;
@@ -37,7 +37,7 @@
 
 .system-title {
   color: #d32f2f;
-  font-size: 22px;
+  font-size: 1.375rem; /* ALTERADO: De 22px para rem para melhor escalabilidade */
   font-weight: bold;
   margin: 0;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
@@ -50,54 +50,54 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 32px 16px;
+  padding: 2rem 1rem; /* ALTERADO: De 32px 16px para rem para melhor escalabilidade */
 }
 
 .login-form-wrapper {
   background: white;
-  padding: 32px;
-  border-radius: 12px;
+  padding: 2rem; /* ALTERADO: De 32px para rem para melhor escalabilidade */
+  border-radius: 0.75rem; /* ALTERADO: De 12px para rem para melhor escalabilidade */
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 500px;
+  max-width: 31.25rem; /* ALTERADO: De 500px para rem para melhor escalabilidade */
   border: 1px solid #e0e0e0;
 }
 
 .login-title {
   color: #d32f2f;
-  font-size: 20px;
+  font-size: 1.25rem; /* ALTERADO: De 20px para rem para melhor escalabilidade */
   font-weight: bold;
-  margin: 0 0 24px 0;
+  margin: 0 0 1.5rem 0; /* ALTERADO: De 24px para rem para melhor escalabilidade */
   text-align: left;
   border-bottom: 3px solid #d32f2f;
-  padding-bottom: 8px;
+  padding-bottom: 0.5rem; /* ALTERADO: De 8px para rem para melhor escalabilidade */
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-bottom: 24px;
+  gap: 1rem; /* ALTERADO: De 16px para rem para melhor escalabilidade */
+  margin-bottom: 1.5rem; /* ALTERADO: De 24px para rem para melhor escalabilidade */
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 0.375rem; /* ALTERADO: De 6px para rem para melhor escalabilidade */
 }
 
 .form-label {
   color: #333;
   font-weight: 600;
-  font-size: 13px;
-  margin-bottom: 4px;
+  font-size: 0.8125rem; /* ALTERADO: De 13px para rem para melhor escalabilidade */
+  margin-bottom: 0.25rem; /* ALTERADO: De 4px para rem para melhor escalabilidade */
 }
 
 .form-input {
-  padding: 10px 14px;
+  padding: 0.625rem 0.875rem; /* ALTERADO: De 10px 14px para rem para melhor escalabilidade */
   border: 2px solid #ddd;
-  border-radius: 6px;
-  font-size: 14px;
+  border-radius: 0.375rem; /* ALTERADO: De 6px para rem para melhor escalabilidade */
+  font-size: 0.875rem; /* ALTERADO: De 14px para rem para melhor escalabilidade */
   transition: all 0.3s ease;
   background: white;
 }
@@ -116,10 +116,10 @@
 .error-message {
   background-color: #ffebee;
   color: #c62828;
-  padding: 10px;
-  border-radius: 6px;
+  padding: 0.625rem; /* ALTERADO: De 10px para rem para melhor escalabilidade */
+  border-radius: 0.375rem; /* ALTERADO: De 6px para rem para melhor escalabilidade */
   border: 1px solid #ffcdd2;
-  font-size: 13px;
+  font-size: 0.8125rem; /* ALTERADO: De 13px para rem para melhor escalabilidade */
   text-align: center;
 }
 
@@ -127,15 +127,15 @@
   background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
   color: white;
   border: none;
-  padding: 12px 20px;
-  border-radius: 6px;
-  font-size: 14px;
+  padding: 0.75rem 1.25rem; /* ALTERADO: De 12px 20px para rem para melhor escalabilidade */
+  border-radius: 0.375rem; /* ALTERADO: De 6px para rem para melhor escalabilidade */
+  font-size: 0.875rem; /* ALTERADO: De 14px para rem para melhor escalabilidade */
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 8px;
+  margin-top: 0.5rem; /* ALTERADO: De 8px para rem para melhor escalabilidade */
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.03125rem; /* ALTERADO: De 0.5px para rem para melhor escalabilidade */
 }
 
 .login-button:hover:not(:disabled) {
@@ -157,62 +157,63 @@
 
 .login-footer {
   background: #f5f5f5;
-  padding: 16px;
+  padding: 1rem; /* ALTERADO: De 16px para rem para melhor escalabilidade */
   text-align: center;
   border-top: 1px solid #e0e0e0;
-  margin-top: 32px;
+  margin-top: 2rem; /* ALTERADO: De 32px para rem para melhor escalabilidade */
 }
 
 .login-footer p {
   margin: 0;
   color: #666;
-  font-size: 11px;
+  font-size: 0.6875rem; /* ALTERADO: De 11px para rem para melhor escalabilidade */
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
   .login-header {
-    padding: 16px 12px 12px;
+    padding: 1rem 0.75rem 0.75rem; /* ALTERADO: De 16px 12px 12px para rem para melhor escalabilidade */
   }
   
   .system-title {
-    font-size: 18px;
+    font-size: 1.125rem; /* ALTERADO: De 18px para rem para melhor escalabilidade */
   }
   
   .logo {
-    width: 48px;
-    height: 48px;
+    width: 3rem; /* ALTERADO: De 48px para rem para melhor escalabilidade */
+    height: 3rem; /* ALTERADO: De 48px para rem para melhor escalabilidade */
   }
   
   .login-form-wrapper {
-    padding: 24px 16px 0 16px;
-    margin: 0 12px;
-    max-width: 360px;
+    padding: 1.5rem 1rem 0 1rem; /* ALTERADO: De 24px 16px 0 16px para rem para melhor escalabilidade */
+    margin: 0 0.75rem; /* ALTERADO: De 12px para rem para melhor escalabilidade */
+    max-width: 22.5rem; /* ALTERADO: De 360px para rem para melhor escalabilidade */
   }
   
   .login-title {
-    font-size: 16px;
+    font-size: 1rem; /* ALTERADO: De 16px para rem para melhor escalabilidade */
   }
 }
 
 @media (max-width: 480px) {
   .system-title {
-    font-size: 16px;
+    font-size: 1rem; /* ALTERADO: De 16px para rem para melhor escalabilidade */
   }
   
   .login-form-wrapper {
-    padding: 20px 12px 0 12px;
-    max-width: 260px;
+    padding: 1.25rem 0.75rem 0 0.75rem; /* ALTERADO: De 20px 12px 0 12px para rem para melhor escalabilidade */
+    max-width: 16.25rem; /* ALTERADO: De 260px para rem para melhor escalabilidade */
   }
   
   .form-input {
-    padding: 8px 10px;
-    font-size: 13px;
+    padding: 0.5rem 0.625rem; /* ALTERADO: De 8px 10px para rem para melhor escalabilidade */
+    font-size: 0.8125rem; /* ALTERADO: De 13px para rem para melhor escalabilidade */
   }
   
   .login-button {
-    padding: 10px 16px;
-    font-size: 13px;
+    padding: 0.625rem 1rem; /* ALTERADO: De 10px 16px para rem para melhor escalabilidade */
+    font-size: 0.8125rem; /* ALTERADO: De 13px para rem para melhor escalabilidade */
   }
 }
+
 
