@@ -53,7 +53,7 @@ const EmployeesPage = ({ onAdminClick, onBackToWelcome }) => {
               Magic Team do Alojamento
             </h1>
             <p className="text-lg text-gray-600">
-              Conheça o time do alojamento.
+              Conheça nossa equipe de funcionários dedicados
             </p>
           </div>
         </div>
