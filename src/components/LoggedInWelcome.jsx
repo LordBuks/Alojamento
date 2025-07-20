@@ -1,7 +1,7 @@
 import { Users, Settings, Shield, LogOut } from 'lucide-react';
 import Footer from './Footer';
 
-const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout }) => {
+const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmployeesPage }) => {
   const isAdminUser = user && user.email === 'gabiru@inter.com';
 
   return (
@@ -63,8 +63,8 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout }) => {
               </button>
 
               <button
-                onClick={() => {/* TODO: Implementar navegação para funcionários */}}
-                className="inline-flex items-center justify-center space-x-2 px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold"
+                onClick={onShowEmployeesPage}
+                className="inline-flex items-center justify-center space-x-2 px-5 py-2 bg-emerald-300 text-white rounded-lg hover:bg-emerald-400 transition-colors text-sm font-semibold"
               >
                 <Users size={18} />
                 <span>Ver MagicTeam</span>

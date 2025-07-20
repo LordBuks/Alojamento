@@ -4,62 +4,26 @@ import Header from './components/Header';
 import CategoryMenu from './components/CategoryMenu';
 import PlayerGrid from './components/PlayerGrid';
 import PlayerModalWithTabs from './components/PlayerModalWithTabs';
+import EmployeeGrid from './components/EmployeeGrid';
+import EmployeeModal from './components/EmployeeModal';
 import AdminPanelWithStories from './components/AdminPanelWithStories';
 import Login from './components/Login';
 import WelcomeScreen from './components/WelcomeScreen';
 import LoggedInWelcome from './components/LoggedInWelcome';
 import { usePlayers } from './hooks/usePlayers';
+import { useEmployees } from './hooks/useEmployees';
 import './App.css';
 
 function AppContent() {
-  const [selectedCategory, setSelectedCategory] = useState('Sub20');
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showAdminPanel, setShowAdminPanel] = useState(false);
+  const [showEmployeesPage, setShowEmployeesPage] = useState(false);
   const [showWelcomeBack, setShowWelcomeBack] = useState(true);
 
-  const { currentUser, loading: authLoading, logout } = useAuth();
-
-  const { players, loading: playersLoading, error, getPlayersByCategory } = usePlayers();
-
-  const filteredPlayers = getPlayersByCategory(selectedCategory);
-
-  const handlePlayerClick = (player) => {
-    setSelectedPlayer(player);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setSelectedPlayer(null);
-  };
-
-  const handleAdminClick = () => {
-    setShowAdminPanel(true);
-    setShowWelcomeBack(false);
-  };
-
-  const handleBackToPublic = () => {
-    setShowAdminPanel(false);
-    setShowWelcomeBack(false);
-  };
-
-  const handleContinueToMain = () => {
-    setShowWelcomeBack(false);
-  };
-
-  const handleLogout = async () => {
-    try {
-      await logout();
-    } catch (error) {
-      console.error("Erro ao fazer logout:", error);
-    }
-  };
-
-  // Se o usuário não estiver logado e a autenticação não estiver carregando, exibe a tela de login
-  if (!currentUser && !authLoading) {
-    return <Login />;
-  }
+  const [selectedCategory, setSelectedCategory] = useState(
+    showEmployeesPage ? "Monitores" : "Sub20"
+  );
 
   // Se a autenticação ou os jogadores estiverem carregando, exibe a tela de carregamento
   if (authLoading || playersLoading) {
@@ -81,6 +45,7 @@ function AppContent() {
         onContinue={handleContinueToMain} 
         onAdminClick={handleAdminClick} 
         onLogout={handleLogout}
+        onShowEmployeesPage={handleShowEmployeesPage}
       />
     );
   }
@@ -88,6 +53,41 @@ function AppContent() {
   // Se o usuário estiver logado e showAdminPanel for verdadeiro, exibe o painel administrativo
   if (currentUser && showAdminPanel) {
     return <AdminPanelWithStories onBackToPublic={handleBackToPublic} />;
+  }
+
+  // Se o usuário estiver logado e showEmployeesPage for verdadeiro, exibe a página de funcionários
+  if (currentUser && showEmployeesPage) {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <Header onAdminClick={handleAdminClick} />
+        <CategoryMenu 
+          selectedCategory={selectedCategory}
+          onCategoryChange={setSelectedCategory}
+          categories={["Monitores", "Assistentes Sociais", "Pedagogia"]}
+        />
+        
+        {error && (
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div className="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded">
+              <p>⚠️ Usando dados de demonstração. {error}</p>
+            </div>
+          </div>
+        )}
+        
+        <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <EmployeeGrid 
+            employees={filteredPlayers} // Usando filteredPlayers temporariamente, será ajustado com useEmployees
+            onEmployeeClick={handlePlayerClick} // Será ajustado para handleEmployeeClick
+          />
+        </main>
+
+        <EmployeeModal 
+          employee={selectedPlayer} // Usando selectedPlayer temporariamente, será ajustado para selectedEmployee
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+        />
+      </div>
+    );
   }
 
   // Se o usuário estiver logado e showWelcomeBack for falso, exibe o conteúdo principal do site
