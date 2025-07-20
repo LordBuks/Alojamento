@@ -4,41 +4,34 @@ import Header from './components/Header';
 import CategoryMenu from './components/CategoryMenu';
 import PlayerGrid from './components/PlayerGrid';
 import PlayerModalWithTabs from './components/PlayerModalWithTabs';
-import EmployeeGrid from './components/EmployeeGrid';
-import EmployeeModal from './components/EmployeeModal';
+import EmployeesPage from './components/EmployeesPage';
 import AdminPanelWithStories from './components/AdminPanelWithStories';
 import Login from './components/Login';
 import WelcomeScreen from './components/WelcomeScreen';
 import LoggedInWelcome from './components/LoggedInWelcome';
 import { usePlayers } from './hooks/usePlayers';
-import { useEmployees } from './hooks/useEmployees';
 import './App.css';
 
 function AppContent() {
   const { currentUser, loading: authLoading, logout } = useAuth();
   const { players, loading: playersLoading, error, getPlayersByCategory } = usePlayers();
-  const { employees, loading: employeesLoading, error: employeesError, getEmployeesByFunction } = useEmployees();
 
   const [selectedPlayer, setSelectedPlayer] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPlayerModalOpen, setIsPlayerModalOpen] = useState(false);
   const [showAdminPanel, setShowAdminPanel] = useState(false);
   const [showEmployeesPage, setShowEmployeesPage] = useState(false);
   const [showWelcomeBack, setShowWelcomeBack] = useState(true);
-
-  const [selectedCategory, setSelectedCategory] = useState(
-    showEmployeesPage ? "Monitores" : "Sub20"
-  );
+  const [selectedCategory, setSelectedCategory] = useState("Sub20");
 
   const filteredPlayers = getPlayersByCategory(selectedCategory);
-  const filteredEmployees = getEmployeesByFunction(selectedCategory);
 
   const handlePlayerClick = (player) => {
     setSelectedPlayer(player);
-    setIsModalOpen(true);
+    setIsPlayerModalOpen(true);
   };
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
+  const handleClosePlayerModal = () => {
+    setIsPlayerModalOpen(false);
     setSelectedPlayer(null);
   };
 
@@ -111,35 +104,10 @@ function AppContent() {
   // Se o usuário estiver logado e showEmployeesPage for verdadeiro, exibe a página de funcionários
   if (currentUser && showEmployeesPage) {
     return (
-      <div className="min-h-screen bg-gray-50">
-        <Header onAdminClick={handleAdminClick} />
-        <CategoryMenu 
-          selectedCategory={selectedCategory}
-          onCategoryChange={setSelectedCategory}
-          categories={["Monitores", "Assistentes Sociais", "Pedagogia"]}
-        />
-        
-        {employeesError && (
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div className="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded">
-              <p>⚠️ Usando dados de demonstração. {employeesError}</p>
-            </div>
-          </div>
-        )}
-        
-        <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <EmployeeGrid 
-            employees={filteredEmployees}
-            onEmployeeClick={handlePlayerClick}
-          />
-        </main>
-
-        <EmployeeModal 
-          employee={selectedPlayer}
-          isOpen={isModalOpen}
-          onClose={handleCloseModal}
-        />
-      </div>
+      <EmployeesPage 
+        onAdminClick={handleAdminClick}
+        onBackToWelcome={() => setShowWelcomeBack(true)}
+      />
     );
   }
 
@@ -170,8 +138,8 @@ function AppContent() {
 
         <PlayerModalWithTabs 
           player={selectedPlayer}
-          isOpen={isModalOpen}
-          onClose={handleCloseModal}
+          isOpen={isPlayerModalOpen}
+          onClose={handleClosePlayerModal}
         />
       </div>
     );

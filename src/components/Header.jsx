@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { LogIn, LogOut, Settings } from 'lucide-react';
+import { LogIn, LogOut, Settings, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import LoginForm from './LoginForm';
 import interLogo from '../assets/inter-logo.png';
 
-const Header = ({ onAdminClick }) => {
+const Header = ({ onAdminClick, onBackToWelcome }) => {
   const [showLoginForm, setShowLoginForm] = useState(false);
   const { currentUser, logout } = useAuth();
 
@@ -33,6 +33,16 @@ const Header = ({ onAdminClick }) => {
             <div className="flex items-center space-x-2">
               {currentUser ? (
                 <>
+                  {/* Botão de voltar para a tela de boas-vindas */}
+                  {onBackToWelcome && (
+                    <button
+                      onClick={onBackToWelcome}
+                      className="flex items-center space-x-1.5 px-3 py-1.5 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 hover:border-gray-400 transition-all duration-200 ease-in-out transform hover:scale-105 text-sm font-medium shadow-sm hover:shadow-md"
+                    >
+                      <ArrowLeft size={16} />
+                      <span>Voltar</span>
+                    </button>
+                  )}
                   {/* Só mostra o botão Painel Admin para o administrador */}
                   {currentUser.email === 'gabiru@inter.com' && (
                     <button
