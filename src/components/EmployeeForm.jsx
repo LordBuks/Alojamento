@@ -25,7 +25,7 @@ const EmployeeForm = ({ employee, onSubmit, onCancel }) => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState([]);
 
-  const functions = ['Monitor', 'Assistente Social', 'Pedagoga'];
+  const functions = ['Monitores', 'Assistentes Sociais', 'Pedagogia'];
   const educationLevels = [
     'Ensino Fundamental',
     'Ensino Médio',
