@@ -15,6 +15,10 @@ import { useEmployees } from './hooks/useEmployees';
 import './App.css';
 
 function AppContent() {
+  const { currentUser, loading: authLoading, logout } = useAuth();
+  const { players, loading: playersLoading, error, getPlayersByCategory } = usePlayers();
+  const { employees, loading: employeesLoading, error: employeesError, getEmployeesByFunction } = useEmployees();
+
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showAdminPanel, setShowAdminPanel] = useState(false);
@@ -24,6 +28,55 @@ function AppContent() {
   const [selectedCategory, setSelectedCategory] = useState(
     showEmployeesPage ? "Monitores" : "Sub20"
   );
+
+  const filteredPlayers = getPlayersByCategory(selectedCategory);
+  const filteredEmployees = getEmployeesByFunction(selectedCategory);
+
+  const handlePlayerClick = (player) => {
+    setSelectedPlayer(player);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedPlayer(null);
+  };
+
+  const handleAdminClick = () => {
+    setShowAdminPanel(true);
+    setShowWelcomeBack(false);
+    setShowEmployeesPage(false);
+  };
+
+  const handleBackToPublic = () => {
+    setShowAdminPanel(false);
+    setShowWelcomeBack(false);
+    setShowEmployeesPage(false);
+  };
+
+  const handleContinueToMain = () => {
+    setShowWelcomeBack(false);
+    setShowEmployeesPage(false);
+  };
+
+  const handleShowEmployeesPage = () => {
+    setShowEmployeesPage(true);
+    setShowWelcomeBack(false);
+    setShowAdminPanel(false);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      console.error("Erro ao fazer logout:", error);
+    }
+  };
+
+  // Se o usuário não estiver logado e a autenticação não estiver carregando, exibe a tela de login
+  if (!currentUser && !authLoading) {
+    return <Login />;
+  }
 
   // Se a autenticação ou os jogadores estiverem carregando, exibe a tela de carregamento
   if (authLoading || playersLoading) {
@@ -66,23 +119,23 @@ function AppContent() {
           categories={["Monitores", "Assistentes Sociais", "Pedagogia"]}
         />
         
-        {error && (
+        {employeesError && (
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded">
-              <p>⚠️ Usando dados de demonstração. {error}</p>
+              <p>⚠️ Usando dados de demonstração. {employeesError}</p>
             </div>
           </div>
         )}
         
         <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <EmployeeGrid 
-            employees={filteredPlayers} // Usando filteredPlayers temporariamente, será ajustado com useEmployees
-            onEmployeeClick={handlePlayerClick} // Será ajustado para handleEmployeeClick
+            employees={filteredEmployees}
+            onEmployeeClick={handlePlayerClick}
           />
         </main>
 
         <EmployeeModal 
-          employee={selectedPlayer} // Usando selectedPlayer temporariamente, será ajustado para selectedEmployee
+          employee={selectedPlayer}
           isOpen={isModalOpen}
           onClose={handleCloseModal}
         />
