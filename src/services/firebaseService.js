@@ -18,6 +18,9 @@ const PLAYERS_COLLECTION = 'players';
 // Coleção de histórias
 const STORIES_COLLECTION = 'historias';
 
+// Coleção de funcionários
+const EMPLOYEES_COLLECTION = 'funcionarios';
+
 // Operações CRUD para jogadores
 export const playersService = {
   // Buscar todos os jogadores
@@ -90,6 +93,83 @@ export const playersService = {
       await deleteDoc(doc(db, PLAYERS_COLLECTION, id));
     } catch (error) {
       console.error('Erro ao remover jogador:', error);
+      throw error;
+    }
+  }
+};
+
+// Operações CRUD para funcionários
+export const employeesService = {
+  // Buscar todos os funcionários
+  async getAll() {
+    try {
+      const querySnapshot = await getDocs(
+        query(collection(db, EMPLOYEES_COLLECTION), orderBy('name'))
+      );
+      return querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+    } catch (error) {
+      console.error('Erro ao buscar funcionários:', error);
+      throw error;
+    }
+  },
+
+  // Buscar funcionários por função
+  async getByFunction(functionType) {
+    try {
+      const q = query(
+        collection(db, EMPLOYEES_COLLECTION),
+        where('function', '==', functionType),
+        orderBy('name')
+      );
+      const querySnapshot = await getDocs(q);
+      return querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+      }));
+    } catch (error) {
+      console.error('Erro ao buscar funcionários por função:', error);
+      throw error;
+    }
+  },
+
+  // Adicionar novo funcionário
+  async add(employeeData) {
+    try {
+      const docRef = await addDoc(collection(db, EMPLOYEES_COLLECTION), {
+        ...employeeData,
+        createdAt: new Date(),
+        updatedAt: new Date()
+      });
+      return docRef.id;
+    } catch (error) {
+      console.error('Erro ao adicionar funcionário:', error);
+      throw error;
+    }
+  },
+
+  // Atualizar funcionário
+  async update(id, employeeData) {
+    try {
+      const employeeRef = doc(db, EMPLOYEES_COLLECTION, id);
+      await updateDoc(employeeRef, {
+        ...employeeData,
+        updatedAt: new Date()
+      });
+    } catch (error) {
+      console.error('Erro ao atualizar funcionário:', error);
+      throw error;
+    }
+  },
+
+  // Remover funcionário
+  async delete(id) {
+    try {
+      await deleteDoc(doc(db, EMPLOYEES_COLLECTION, id));
+    } catch (error) {
+      console.error('Erro ao remover funcionário:', error);
       throw error;
     }
   }

@@ -22,7 +22,7 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout }) => {
             
             <p className="text-sm text-gray-700 mb-5">
               Você agora tem acesso ao sistema de gestão do alojamento. 
-              Aqui você pode visualizar informações detalhadas dos atletas alojados.
+              Aqui você pode visualizar informações detalhadas dos atletas alojados e do Magic Team do alojamento.
             </p>
 
             <div className="grid md:grid-cols-2 gap-3 mb-5">
@@ -60,6 +60,14 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout }) => {
               >
                 <Users size={18} />
                 <span>Ver Atletas</span>
+              </button>
+
+              <button
+                onClick={() => {/* TODO: Implementar navegação para funcionários */}}
+                className="inline-flex items-center justify-center space-x-2 px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-sm font-semibold"
+              >
+                <Users size={18} />
+                <span>Ver MagicTeam</span>
               </button>
 
               {isAdminUser && (
