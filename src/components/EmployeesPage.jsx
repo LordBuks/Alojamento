@@ -57,6 +57,7 @@ const EmployeesPage = ({ onAdminClick, onBackToWelcome }) => {
         selectedCategory={selectedCategory}
         onCategoryChange={setSelectedCategory}
         categories={["Monitores", "Assistentes Sociais", "Pedagogia"]}
+        title="Funcionários por Função"
       />
       
       {employeesError && (

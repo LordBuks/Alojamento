@@ -1,14 +1,17 @@
-const CategoryMenu = ({ selectedCategory, onCategoryChange }) => {
-  const categories = ['Sub20', 'Sub17', 'Sub16', 'Sub15', 'Sub14'];
+const CategoryMenu = ({ selectedCategory, onCategoryChange, categories, title }) => {
+  // Categorias padrão para atletas se não forem fornecidas
+  const defaultCategories = ['Sub20', 'Sub17', 'Sub16', 'Sub15', 'Sub14'];
+  const menuCategories = categories || defaultCategories;
+  const menuTitle = title || 'Atletas Alojados';
 
   return (
     <div className="bg-gradient-to-r from-[#E5050F] to-[#C20C18] py-4 shadow-lg">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-2xl font-bold text-white text-center mb-4 tracking-wide">
-         Atletas Alojados
+          {menuTitle}
         </h2>
         <div className="flex flex-wrap justify-center gap-3">
-          {categories.map((category) => (
+          {menuCategories.map((category) => (
             <button
               key={category}
               onClick={() => onCategoryChange(category)}
