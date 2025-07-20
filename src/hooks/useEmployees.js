@@ -18,7 +18,16 @@ export const useEmployees = () => {
       setEmployees(employeesData);
     } catch (err) {
       console.error('Erro ao carregar funcionários:', err);
-      setError('Erro ao carregar funcionários. Usando dados de demonstração.');
+      
+      // Verificar se é erro de permissão do Firebase
+      if (err.code === 'permission-denied') {
+        setError('Erro de permissão. Verifique as regras do Firebase para a coleção funcionarios.');
+      } else if (err.code === 'unavailable') {
+        setError('Firebase indisponível. Verifique sua conexão.');
+      } else {
+        setError('Erro ao carregar funcionários. Verifique a configuração do Firebase.');
+      }
+      
       // Dados de demonstração em caso de erro
       setEmployees([]);
     } finally {

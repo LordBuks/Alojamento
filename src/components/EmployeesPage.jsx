@@ -24,6 +24,12 @@ const EmployeesPage = ({ onAdminClick, onBackToWelcome }) => {
     setSelectedEmployee(null);
   };
 
+  const handleBackToWelcome = () => {
+    if (onBackToWelcome) {
+      onBackToWelcome();
+    }
+  };
+
   if (employeesLoading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -37,7 +43,7 @@ const EmployeesPage = ({ onAdminClick, onBackToWelcome }) => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header onAdminClick={onAdminClick} onBackToWelcome={onBackToWelcome} />
+      <Header onAdminClick={onAdminClick} onBackToWelcome={handleBackToWelcome} />
       
       {/* Título específico para funcionários */}
       <div className="bg-white shadow-sm border-b">

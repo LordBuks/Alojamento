@@ -115,7 +115,10 @@ function AppContent() {
   if (currentUser && !showWelcomeBack) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <Header onAdminClick={handleAdminClick} />
+        <Header 
+          onAdminClick={handleAdminClick} 
+          onBackToWelcome={() => setShowWelcomeBack(true)}
+        />
         <CategoryMenu 
           selectedCategory={selectedCategory}
           onCategoryChange={setSelectedCategory}
