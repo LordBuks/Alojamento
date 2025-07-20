@@ -24,7 +24,7 @@ const EmployeesPage = ({ onAdminClick, onBackToWelcome }) => {
     setSelectedEmployee(null);
   };
 
-  const handleBackToWelcome = () => {
+  const handleBackToWelcomePage = () => {
     if (onBackToWelcome) {
       onBackToWelcome();
     }
@@ -43,7 +43,7 @@ const EmployeesPage = ({ onAdminClick, onBackToWelcome }) => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header onAdminClick={onAdminClick} onBackToWelcome={handleBackToWelcome} />
+      <Header onAdminClick={onAdminClick} onBackToWelcome={handleBackToWelcomePage} />
       
       {/* Título específico para funcionários */}
       <div className="bg-white shadow-sm border-b">

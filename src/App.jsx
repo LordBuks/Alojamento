@@ -10,20 +10,33 @@ import Login from './components/Login';
 import WelcomeScreen from './components/WelcomeScreen';
 import LoggedInWelcome from './components/LoggedInWelcome';
 import { usePlayers } from './hooks/usePlayers';
+import { useEmployees } from './hooks/useEmployees';
 import './App.css';
 
 function AppContent() {
   const { currentUser, loading: authLoading, logout } = useAuth();
   const { players, loading: playersLoading, error, getPlayersByCategory } = usePlayers();
+  const { employees, loading: employeesLoading, error: employeesError, getEmployeesByFunction } = useEmployees();
 
   const [selectedPlayer, setSelectedPlayer] = useState(null);
   const [isPlayerModalOpen, setIsPlayerModalOpen] = useState(false);
   const [showAdminPanel, setShowAdminPanel] = useState(false);
   const [showEmployeesPage, setShowEmployeesPage] = useState(false);
   const [showWelcomeBack, setShowWelcomeBack] = useState(true);
+
   const [selectedCategory, setSelectedCategory] = useState("Sub20");
 
+  // Atualizar categoria quando mudar para página de funcionários ou painel admin
+  useEffect(() => {
+    if (showEmployeesPage) {
+      setSelectedCategory("Monitores");
+    } else if (!showAdminPanel) {
+      setSelectedCategory("Sub20");
+    }
+  }, [showEmployeesPage, showAdminPanel]);
+
   const filteredPlayers = getPlayersByCategory(selectedCategory);
+  const filteredEmployees = getEmployeesByFunction(selectedCategory);
 
   const handlePlayerClick = (player) => {
     setSelectedPlayer(player);
@@ -71,8 +84,8 @@ function AppContent() {
     return <Login />;
   }
 
-  // Se a autenticação ou os jogadores estiverem carregando, exibe a tela de carregamento
-  if (authLoading || playersLoading) {
+  // Se a autenticação ou os dados estiverem carregando, exibe a tela de carregamento
+  if (authLoading || playersLoading || employeesLoading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
@@ -161,4 +174,5 @@ function App() {
 }
 
 export default App;
+
 
