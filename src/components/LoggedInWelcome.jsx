@@ -26,27 +26,27 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmplo
             </p>
 
             <div className="grid md:grid-cols-2 gap-3 mb-5">
-              <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+              <div className="bg-gray-400 border border-gray-500 rounded-lg p-3">
                 <div className="flex items-center mb-2">
-                  <Users className="text-red-600 mr-2" size={18} />
-                  <h3 className="text-sm font-semibold text-gray-800">
+                  <Users className="text-white mr-2" size={18} />
+                  <h3 className="text-sm font-bold text-white">
                     Acesso aos Atletas
                   </h3>
                 </div>
-                <p className="text-red-700 text-xs">
+                <p className="text-white font-bold text-xs">
                   Visualize informações completas dos atletas organizadas por categoria: 
                   Sub20, Sub17, Sub16, Sub15 e Sub14.
                 </p>
               </div>
 
-              <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+              <div className="bg-gray-400 border border-gray-500 rounded-lg p-3">
                 <div className="flex items-center mb-2">
-                  <Shield className="text-red-600 mr-2" size={18} />
-                  <h3 className="text-sm font-semibold text-gray-800">
+                  <Shield className="text-white mr-2" size={18} />
+                  <h3 className="text-sm font-bold text-white">
                     Dados Protegidos
                   </h3>
                 </div>
-                <p className="text-red-700 text-xs">
+                <p className="text-white font-bold text-xs">
                   Todas as informações são tratadas com segurança e conforme 
                   as diretrizes da LGPD.
                 </p>
@@ -56,7 +56,7 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmplo
             <div className="flex flex-col sm:flex-row gap-2 justify-center">
               <button
                 onClick={onContinue}
-                className="inline-flex items-center justify-center space-x-2 px-5 py-2 bg-[#E5050F] text-white rounded-lg hover:bg-[#C20C18] transition-colors text-sm font-semibold"
+                className="inline-flex items-center justify-center space-x-2 px-5 py-2 bg-white border-2 border-[#E5050F] text-[#E5050F] rounded-lg hover:bg-gray-100 transition-colors text-sm font-semibold"
               >
                 <Users size={18} />
                 <span>Ver Atletas</span>
@@ -64,7 +64,7 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmplo
 
               <button
                 onClick={onShowEmployeesPage}
-                className="inline-flex items-center justify-center space-x-2 px-5 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors text-sm font-semibold"
+                className="inline-flex items-center justify-center space-x-2 px-5 py-2 bg-white border-2 border-[#E5050F] text-[#E5050F] rounded-lg hover:bg-gray-100 transition-colors text-sm font-semibold"
               >
                 <Users size={18} />
                 <span>Ver MagicTeam</span>
@@ -73,7 +73,7 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmplo
               {isAdminUser && (
                 <button
                   onClick={onAdminClick}
-                  className="inline-flex items-center justify-center space-x-2 px-5 py-2 border-2 border-[#E5050F] text-[#E5050F] rounded-lg hover:bg-[#E5050F] hover:text-white transition-colors text-sm font-semibold"
+                  className="inline-flex items-center justify-center space-x-2 px-5 py-2 bg-white border-2 border-[#E5050F] text-[#E5050F] rounded-lg hover:bg-gray-100 transition-colors text-sm font-semibold"
                 >
                   <Settings size={18} />
                   <span>Painel Admin</span>
@@ -82,7 +82,7 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmplo
 
               <button
                 onClick={onLogout}
-                className="inline-flex items-center justify-center space-x-2 px-5 py-2 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm font-semibold"
+                className="inline-flex items-center justify-center space-x-2 px-5 py-2 bg-white border-2 border-[#E5050F] text-[#E5050F] rounded-lg hover:bg-gray-100 transition-colors text-sm font-semibold"
               >
                 <LogOut size={18} />
                 <span>Voltar para o Login</span>
