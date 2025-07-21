@@ -50,7 +50,7 @@ const EmployeesPage = ({ onAdminClick, onBackToWelcome }) => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="text-center">
             <h1 className="text-3xl font-bold text-gray-900 mb-2">
-              Magic Team do Alojamento
+              Nosso Time
             </h1>
             <p className="text-lg text-gray-600">
               Conheça a equipe do alojamento.
@@ -63,7 +63,7 @@ const EmployeesPage = ({ onAdminClick, onBackToWelcome }) => {
         selectedCategory={selectedCategory}
         onCategoryChange={setSelectedCategory}
         categories={["Monitores", "Assistentes Sociais", "Pedagogia"]}
-        title="Funcionários por Função"
+        title="Funcinários"
       />
       
       {employeesError && (
