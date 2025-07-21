@@ -64,7 +64,7 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmplo
 
               <button
                 onClick={onShowEmployeesPage}
-                className="inline-flex items-center justify-center space-x-2 px-5 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors text-sm font-semibold"
+                className="inline-flex items-center justify-center space-x-2 px-5 py-2 bg-emerald-300 text-white rounded-lg hover:bg-emerald-400 transition-colors text-sm font-semibold"
               >
                 <Users size={18} />
                 <span>Ver MagicTeam</span>
@@ -82,7 +82,7 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmplo
 
               <button
                 onClick={onLogout}
-                className="inline-flex items-center justify-center space-x-2 px-5 py-2 bg-white border-2 border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-sm font-semibold"
+                className="inline-flex items-center justify-center space-x-2 px-5 py-2 border-2 border-gray-400 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-semibold"
               >
                 <LogOut size={18} />
                 <span>Voltar para o Login</span>
