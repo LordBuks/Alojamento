@@ -56,7 +56,7 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmplo
             <div className="flex flex-col sm:flex-row gap-2 justify-center">
               <button
                 onClick={onContinue}
-                className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-[#E5050F] border-2 border-white text-white rounded-lg hover:bg-gray-100 hover:text-[#E5050F] hover:border-[#E5050F] transition-colors text-sm font-semibold min-w-[140px]"
+                className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-[#E5050F] border-2 border-white text-white rounded hover:bg-gray-100 hover:text-[#E5050F] hover:border-[#E5050F] transition-colors text-sm font-semibold min-w-[140px]"
               >
                 <Users size={18} />
                 <span>Ver Atletas</span>
@@ -64,7 +64,7 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmplo
 
               <button
                 onClick={onShowEmployeesPage}
-                className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-[#E5050F] border-2 border-white text-white rounded-lg hover:bg-gray-100 hover:text-[#E5050F] hover:border-[#E5050F] transition-colors text-sm font-semibold min-w-[140px]"
+                className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-[#E5050F] border-2 border-white text-white rounded hover:bg-gray-100 hover:text-[#E5050F] hover:border-[#E5050F] transition-colors text-sm font-semibold min-w-[140px]"
               >
                 <Users size={18} />
                 <span>Ver MagicTeam</span>
@@ -73,7 +73,7 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmplo
               {isAdminUser && (
                 <button
                   onClick={onAdminClick}
-                  className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-[#E5050F] border-2 border-white text-white rounded-lg hover:bg-gray-100 hover:text-[#E5050F] hover:border-[#E5050F] transition-colors text-sm font-semibold min-w-[140px]"
+                  className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-[#E5050F] border-2 border-white text-white rounded hover:bg-gray-100 hover:text-[#E5050F] hover:border-[#E5050F] transition-colors text-sm font-semibold min-w-[140px]"
                 >
                   <Settings size={18} />
                   <span>Painel Admin</span>
@@ -82,7 +82,7 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmplo
 
               <button
                 onClick={onLogout}
-                className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-[#E5050F] border-2 border-white text-white rounded-lg hover:bg-gray-100 hover:text-[#E5050F] hover:border-[#E5050F] transition-colors text-sm font-semibold min-w-[140px]"
+                className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-[#E5050F] border-2 border-white text-white rounded hover:bg-gray-100 hover:text-[#E5050F] hover:border-[#E5050F] transition-colors text-sm font-semibold min-w-[140px]"
               >
                 <LogOut size={18} />
                 <span>Sair</span>
