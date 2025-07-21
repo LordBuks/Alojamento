@@ -22,7 +22,7 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmplo
             
             <p className="text-sm text-gray-700 mb-5">
               Você agora tem acesso ao sistema de gestão do alojamento. 
-              Aqui você pode visualizar informações detalhadas dos atletas alojados e do Magic Team do alojamento.
+              Aqui você pode visualizar informações detalhadas dos atletas alojados e do noso Time do alojamento.
             </p>
 
             <div className="grid md:grid-cols-2 gap-3 mb-5">
@@ -34,7 +34,7 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmplo
                   </h3>
                 </div>
                 <p className="text-sm text-gray-700">
-                  Visualize informações completas dos atletas organizadas por categoria: 
+                  Visualize informações completas dos atletas por categoria: 
                   Sub20, Sub17, Sub16, Sub15 e Sub14.
                 </p>
               </div>
