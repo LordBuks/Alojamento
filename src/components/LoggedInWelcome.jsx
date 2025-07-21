@@ -33,7 +33,7 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmplo
                     Acesso aos Atletas
                   </h3>
                 </div>
-                <p className="text-[#E5050F] font-bold text-xs">
+                <p className="text-sm text-gray-700">
                   Visualize informações completas dos atletas organizadas por categoria: 
                   Sub20, Sub17, Sub16, Sub15 e Sub14.
                 </p>
@@ -46,7 +46,7 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmplo
                     Dados Protegidos
                   </h3>
                 </div>
-                <p className="text-[#E5050F] font-bold text-xs">
+                <p className="text-sm text-gray-700">
                   Todas as informações são tratadas com segurança e conforme 
                   as diretrizes da LGPD.
                 </p>
