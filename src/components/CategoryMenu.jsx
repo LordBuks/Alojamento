@@ -17,8 +17,8 @@ const CategoryMenu = ({ selectedCategory, onCategoryChange, categories, title })
         onClick={() => onCategoryChange(category)}
         className={`${buttonWidth} ${buttonHeight} rounded font-medium text-sm transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg whitespace-nowrap ${
           isSelected
-            ? 'bg-white text-[#E5050F] shadow-md ring-2 ring-white ring-opacity-50'
-            : 'bg-transparent text-white border border-white border-opacity-70 hover:bg-white hover:text-[#E5050F] hover:border-opacity-100'
+            ? 'bg-white text-[#E5050F] border-2 border-[#E5050F] shadow-md'
+            : 'bg-transparent text-white border-2 border-white hover:bg-white hover:text-[#E5050F] hover:border-[#E5050F]'
         }`}
       >
         {category}

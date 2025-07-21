@@ -89,9 +89,6 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmplo
               </button>
             </div>
           </div>
-          
-          {/* Faixa vermelha abaixo dos botões */}
-          <div className="w-full h-4 bg-[#E5050F] mt-4"></div>
         </div>
       </main>
       <Footer/>
