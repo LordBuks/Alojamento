@@ -6,18 +6,25 @@ const CategoryMenu = ({ selectedCategory, onCategoryChange, categories, title })
   const menuCategories = categories || defaultCategories;
   const menuTitle = title || 'Atletas Alojados';
 
-  const ButtonComponent = ({ category, isSelected }) => (
-    <button
-      onClick={() => onCategoryChange(category)}
-      className={`px-4 py-2 rounded-full font-medium text-sm transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg whitespace-nowrap ${
-        isSelected
-          ? 'bg-white text-[#E5050F] shadow-md ring-2 ring-white ring-opacity-50'
-          : 'bg-transparent text-white border border-white border-opacity-70 hover:bg-white hover:text-[#E5050F] hover:border-opacity-100'
-      }`}
-    >
-      {category}
-    </button>
-  );
+  const ButtonComponent = ({ category, isSelected }) => {
+    // Determinar tamanho baseado no tipo de categoria
+    const isEmployeeCategory = ['Monitores', 'Assistentes Sociais', 'Pedagogia'].includes(category);
+    const buttonWidth = isEmployeeCategory ? 'w-36' : 'w-20';
+    const buttonHeight = 'h-10';
+    
+    return (
+      <button
+        onClick={() => onCategoryChange(category)}
+        className={`${buttonWidth} ${buttonHeight} rounded-full font-medium text-sm transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg whitespace-nowrap ${
+          isSelected
+            ? 'bg-white text-[#E5050F] shadow-md ring-2 ring-white ring-opacity-50'
+            : 'bg-transparent text-white border border-white border-opacity-70 hover:bg-white hover:text-[#E5050F] hover:border-opacity-100'
+        }`}
+      >
+        {category}
+      </button>
+    );
+  };
 
   return (
     <div className="bg-gradient-to-r from-[#E5050F] to-[#C20C18] py-4 shadow-lg">
