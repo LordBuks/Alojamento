@@ -16,11 +16,11 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmplo
           </p>
           
           <div className="bg-white rounded-lg shadow-lg p-5 mb-3">
-            <h2 className="text-lg font-semibold text-[#3f3030] mb-3">
+            <h2 className="text-lg font-semibold text-[#E5050F] mb-3">
               Sistema de Gestão de Atletas Alojados
             </h2>
             
-            <p className="text-sm text-[#3f3030] mb-5">
+            <p className="text-sm text-gray-700 mb-5">
               Você agora tem acesso ao sistema de gestão do alojamento. 
               Aqui você pode visualizar informações detalhadas dos atletas alojados e do Magic Team do alojamento.
             </p>
@@ -28,12 +28,12 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmplo
             <div className="grid md:grid-cols-2 gap-3 mb-5">
               <div className="bg-white border-2 border-[#E5050F] rounded-lg p-3">
                 <div className="flex items-center mb-2">
-                  <Users className="text-[#3f3030] mr-2" size={18} />
-                  <h3 className="text-sm font-bold text-[#3f3030]">
+                  <Users className="text-[#E5050F] mr-2" size={18} />
+                  <h3 className="text-sm font-bold text-[#E5050F]">
                     Acesso aos Atletas
                   </h3>
                 </div>
-                <p className="text-[#3f3030] font-bold text-xs">
+                <p className="text-[#E5050F] font-bold text-xs">
                   Visualize informações completas dos atletas organizadas por categoria: 
                   Sub20, Sub17, Sub16, Sub15 e Sub14.
                 </p>
@@ -41,12 +41,12 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmplo
 
               <div className="bg-white border-2 border-[#E5050F] rounded-lg p-3">
                 <div className="flex items-center mb-2">
-                  <Shield className="text-[#3f3030] mr-2" size={18} />
-                  <h3 className="text-sm font-bold text-[#3f3030]">
+                  <Shield className="text-[#E5050F] mr-2" size={18} />
+                  <h3 className="text-sm font-bold text-[#E5050F]">
                     Dados Protegidos
                   </h3>
                 </div>
-                <p className="text-[#3f3030] font-bold text-xs">
+                <p className="text-[#E5050F] font-bold text-xs">
                   Todas as informações são tratadas com segurança e conforme 
                   as diretrizes da LGPD.
                 </p>
@@ -56,7 +56,7 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmplo
             <div className="flex flex-col sm:flex-row gap-2 justify-center">
               <button
                 onClick={onContinue}
-                className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-white border-2 border-[#E5050F] text-[#3f3030] rounded-md hover:bg-gray-100 transition-colors text-sm font-semibold min-w-[140px]"
+                className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-[#E5050F] border-2 border-white text-white rounded-md hover:bg-[#C20C18] transition-colors text-sm font-semibold min-w-[140px]"
               >
                 <Users size={18} />
                 <span>Ver Atletas</span>
@@ -64,7 +64,7 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmplo
 
               <button
                 onClick={onShowEmployeesPage}
-                className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-white border-2 border-[#E5050F] text-[#3f3030] rounded-md hover:bg-gray-100 transition-colors text-sm font-semibold min-w-[140px]"
+                className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-[#E5050F] border-2 border-white text-white rounded-md hover:bg-[#C20C18] transition-colors text-sm font-semibold min-w-[140px]"
               >
                 <Users size={18} />
                 <span>Ver MagicTeam</span>
@@ -73,7 +73,7 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmplo
               {isAdminUser && (
                 <button
                   onClick={onAdminClick}
-                  className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-white border-2 border-[#E5050F] text-[#3f3030] rounded-md hover:bg-gray-100 transition-colors text-sm font-semibold min-w-[140px]"
+                  className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-[#E5050F] border-2 border-white text-white rounded-md hover:bg-[#C20C18] transition-colors text-sm font-semibold min-w-[140px]"
                 >
                   <Settings size={18} />
                   <span>Painel Admin</span>
@@ -82,13 +82,16 @@ const LoggedInWelcome = ({ user, onContinue, onAdminClick, onLogout, onShowEmplo
 
               <button
                 onClick={onLogout}
-                className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-white border-2 border-[#E5050F] text-[#3f3030] rounded-md hover:bg-gray-100 transition-colors text-sm font-semibold min-w-[140px]"
+                className="inline-flex items-center justify-center space-x-2 px-6 py-3 bg-[#E5050F] border-2 border-white text-white rounded-md hover:bg-[#C20C18] transition-colors text-sm font-semibold min-w-[140px]"
               >
                 <LogOut size={18} />
                 <span>Sair</span>
               </button>
             </div>
           </div>
+          
+          {/* Faixa vermelha abaixo dos botões */}
+          <div className="w-full h-4 bg-[#E5050F] mt-4"></div>
         </div>
       </main>
       <Footer/>
